@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  mysql-appgate:
+    image: mysql:latest
+    container_name: mysql-appgate
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "MYSQL_ROOT_PASSWORD=root"
+      - "MYSQL_DATABASE=appgate"
+    ports:
+      - 3306:3306
+    networks:
+      - docker-net
+networks:
+  docker-net:
+    driver: bridge
