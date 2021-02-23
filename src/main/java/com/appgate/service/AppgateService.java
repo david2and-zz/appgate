@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -36,15 +37,11 @@ public class AppgateService {
         return "Ok";
     }
 
-    public static String decToIp(long ten){
-        StringBuilder sb=new StringBuilder();
-        for(int i=0;i<4;i++){
-            sb.insert(0,Long.toString(ten&0xff));
-            if(i<3){
-                sb.insert(0,'.');
-            }
-            ten=ten>>8;
-        }
-        return sb.toString();
+    public Collection<AppgateEntity> getDataByIpFront(String ip_front){
+        return appgateRepository.findByIpFront(ip_front);
+    }
+
+    public Collection<AppgateEntity> getDataByCountry(String ip_front){
+        return appgateRepository.findByIpFront(ip_front);
     }
 }
