@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AppgateRepository extends CrudRepository<AppgateEntity, String>{
+public interface AppgateRepository extends CrudRepository<AppgateEntity, Long>{
 }

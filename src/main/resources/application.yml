@@ -10,5 +10,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
-  flyway:
-    baseline-on-migrate: true
+      generate_statistics: true
+      jdbc:
+        batch_size: 5000000
+        batch_versioned_data: true
+        order_inserts: true
+        order_updates: true
+

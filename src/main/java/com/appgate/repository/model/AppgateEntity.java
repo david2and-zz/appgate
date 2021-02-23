@@ -6,23 +6,34 @@ import lombok.Builder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.math.BigInteger;
 
 @Entity(name = "appgate")
 @Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class AppgateEntity {
+
+    public AppgateEntity(String ip_front, String ip_to, String country_code, String country, String region, String city, String latitude, String longitude, String timezone) {
+        this.ip_front = ip_front;
+        this.ip_to = ip_to;
+        this.country_code = country_code;
+        this.country = country;
+        this.region = region;
+        this.city = city;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.timezone = timezone;
+    }
+
     @Id
-    @Column(name = "id")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @Column(name = "ip_front")
     private String ip_front;
@@ -43,16 +54,14 @@ public class AppgateEntity {
     private String city;
 
     @Column(name = "latitude")
-    private Double latitude;
+    private String latitude;
 
     @Column(name = "longitude")
-    private Double longitude;
+    private String longitude;
 
     @Column(name = "timezone")
     private String timezone;
 
-    @Column(name = "decimal_value")
-    private BigInteger decimal_value;
 }
 
 
