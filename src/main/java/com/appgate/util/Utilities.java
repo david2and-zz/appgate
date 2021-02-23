@@ -1,6 +1,7 @@
 package com.appgate.util;
 
 import com.appgate.repository.model.AppgateEntity;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -12,11 +13,13 @@ import java.util.HashSet;
 import java.util.List;
 
 @Service
+@Slf4j
 public class Utilities {
 
     private final String COMMA_DELIMITER = ",";
 
     public List getFileData() throws IOException {
+        log.info("CARGANDO ARCHIVO");
         List<AppgateEntity> records = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/ipgeo.csv"))) {
             String line;
@@ -37,7 +40,7 @@ public class Utilities {
 
             }
         }
-
+        log.info("CARGA ARCHIVO FINALIZADA - NUMERO DE LINEAS: "+ records.size());
         return records;
     }
 }
